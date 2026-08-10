@@ -1,7 +1,7 @@
 def ft_plot_area():
-    length = input("Enter length: ")
-    width = input("Enter width: ")
-    plot_area = int(length) * int(width)
+    length: int = int(input("Enter length: "))
+    width: int = int(input("Enter width: "))
+    plot_area = length * width
     print("Plot area: ", plot_area)
 
 
