@@ -108,8 +108,8 @@ class Flower(Plant):
     def bloom(self) -> None:
         self._bloomed = True
 
-    def show(self) -> None:
-        super().show()
+    def show(self, pre_message: str = "", post_message: str = "") -> None:
+        super().show(pre_message, post_message)
         print(f" Color: {self.color}")
         print(self.get_blooming_message())
 
@@ -135,8 +135,8 @@ class Tree(Plant):
     def get_trunk_diameter(self) -> float:
         return round(self.trunk_diameter, 2)
 
-    def show(self) -> None:
-        super().show()
+    def show(self, pre_message: str = "", post_message: str = "") -> None:
+        super().show(pre_message, post_message)
         print(f" Trunk diameter: {self.get_printable_trunk_diameter()}")
 
     def produce_shade(self) -> None:
@@ -174,8 +174,8 @@ class Vegetable(Plant):
     def get_nutritional_value(self) -> int:
         return self.nutritional_value
 
-    def show(self) -> None:
-        super().show()
+    def show(self, pre_message: str = "", post_message: str = "") -> None:
+        super().show(pre_message, post_message)
         print(f" Harvest season: {self.get_printable_harvest_season()}")
         print(f" Nutritional value: {self.get_printable_nutritional_value()}")
 

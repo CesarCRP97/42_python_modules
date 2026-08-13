@@ -158,12 +158,8 @@ class Tree(Plant):
     def get_trunk_diameter(self) -> float:
         return round(self.trunk_diameter, 2)
 
-    def get_stats(self) -> tuple[int, int, int, int]:
-        plant_stats: tuple = super().get_stats()
-        return plant_stats + (self._shade_stats,)
-
-    def show(self) -> None:
-        super().show()
+    def show(self, pre_message: str = "", post_message: str = "") -> None:
+        super().show(pre_message, post_message)
         print(f" Trunk diameter: {self.get_printable_trunk_diameter()}")
 
     def produce_shade(self) -> None:
@@ -202,8 +198,8 @@ class Vegetable(Plant):
     def get_nutritional_value(self) -> int:
         return self.nutritional_value
 
-    def show(self) -> None:
-        super().show()
+    def show(self, pre_message: str = "", post_message: str = "") -> None:
+        super().show(pre_message, post_message)
         print(f" Harvest season: {self.get_printable_harvest_season()}")
         print(f" Nutritional value: {self.get_printable_nutritional_value()}")
 
@@ -240,8 +236,8 @@ class Flower(Plant):
     def bloom(self) -> None:
         self._bloomed = True
 
-    def show(self) -> None:
-        super().show()
+    def show(self, pre_message: str = "", post_message: str = "") -> None:
+        super().show(pre_message, post_message)
         print(f" Color: {self.color}")
         print(self.get_blooming_message())
 
@@ -265,12 +261,12 @@ class Seed(Flower):
     def seeds(self) -> int:
         return self._seeds
 
-    def bloom(self, seeds: int) -> None:
+    def bloom(self) -> None:
         super().bloom()
-        self._seeds = seeds
+        self._seeds = 42
 
-    def show(self) -> None:
-        super().show()
+    def show(self, pre_message: str = "", post_message: str = "") -> None:
+        super().show(pre_message, post_message)
         print(f"Seeds: {self.get_printable_seeds()}")
 
     def get_printable_seeds(self) -> str:
@@ -316,7 +312,7 @@ def ft_garden_analytics() -> None:
     seed: Seed = Seed("sunflower", 5.0, 10, "Yellow")
     seed.show()
     print("[make sunflower grow, age and bloom]")
-    seed.bloom(42)
+    seed.bloom()
     seed.age(20)
     seed.show()
     print("[statistics for Sunflower]")
