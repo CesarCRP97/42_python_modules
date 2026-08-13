@@ -5,13 +5,34 @@ class Plant:
     DEFAULT_HEIGHT: float = 25.0
     DEFAULT_DAYS: int = 30
 
+    class Statistics:
+        def __init__(self) -> None:
+            self._grow_stats: int = 0
+            self._age_stats: int = 0
+            self._show_stats: int = 0
+
+        def register_grow(self) -> None:
+            self._grow_stats += 1
+
+        def register_age(self) -> None:
+            self._age_stats += 1
+
+        def register_show(self) -> None:
+            self._show_stats += 1
+
+        def display_stats(self) -> None:
+            grow: str = f"{self._grow_stats} grow"
+            age: str = f"{self._age_stats} age"
+            show: str = f"{self._show_stats} show"
+            print(f"Stats: {grow}, {age}, {show}")
+
     def __init__(self, name: str = DEFAULT_NAME,
                  height: float = DEFAULT_HEIGHT,
                  days: int = DEFAULT_DAYS) -> None:
         self._name: str = name
         self.set_height(height)
         self.set_days(days)
-        self.init_stats()
+        self._statistics: Plant.Statistics = self.Statistics()
 
     @property
     def name(self) -> str:
@@ -43,8 +64,8 @@ class Plant:
 
     def get_stats(self) -> tuple[int, int, int]:
         return self._grow_stats, self._age_stats, self._show_stats
-    # Setters
 
+    # Setters
     def set_height(self, height: float) -> None:
         if height >= 0:
             self._height = height
@@ -78,13 +99,12 @@ class Plant:
         print(pre_message + self.get_printable_name() + ": " +
               self.get_printable_height() + ", " +
               self.get_printable_days() + post_message)
-        self._show_stats += 1
+        self._statistics.register_show()
 
     def grow(self) -> None:
         self._height += self.growth_rate
-        self._grow_stats += 1
+        self._statistics.register_grow()
 
-    # todo: try how many iterations makes
     def age(self, days=1) -> None:
         if days <= 0:
             print("Invalid quantity of days to age!!! :(")
@@ -92,7 +112,10 @@ class Plant:
             for i in range(days):
                 self._days += 1
                 self.grow()
-            self._age_stats += 1
+            self._statistics.register_age()
+
+    def display_statistics(self) -> None:
+        self._statistics.display_stats()
 
     @staticmethod
     def more_than_year(days: int) -> bool:
@@ -100,23 +123,44 @@ class Plant:
 
     @classmethod
     def create_plant(cls) -> "Plant":
-        return cls("Unknown", 0.0, 0)
+        return cls("Unknown plant", 0.0, 0)
 
 
 class Tree(Plant):
+
+    class Statistics(Plant.Statistics):
+        def __init__(self) -> None:
+            super().__init__()
+            self._shade_calls: int = 0
+
+        def register_shade(self) -> None:
+            self._shade_calls += 1
+
+        def display_stats(self) -> None:
+            super().display_stats()
+            print(f" Shade: {self._shade_calls}")
+
     def __init__(self, name: str,
                  height: float,
                  days: int,
                  trunk_diameter: float = 5.0) -> None:
         super().__init__(name, height, days)
         self._trunk_diameter: float = trunk_diameter
+        self.init_stats()
 
     @property
     def trunk_diameter(self) -> float:
         return self._trunk_diameter
 
+    def init_stats(self) -> None:
+        self._shade_stats: int = 0
+
     def get_trunk_diameter(self) -> float:
         return round(self.trunk_diameter, 2)
+
+    def get_stats(self) -> tuple[int, int, int, int]:
+        plant_stats: tuple = super().get_stats()
+        return plant_stats + (self._shade_stats,)
 
     def show(self) -> None:
         super().show()
@@ -127,6 +171,7 @@ class Tree(Plant):
         h: str = self.get_printable_height()
         w: str = self.get_printable_trunk_diameter()
         message += f" now produces a shade of {h} long and {w} wide."
+        self._shade_stats += 1
         print(message)
 
     def get_printable_trunk_diameter(self) -> str:
@@ -233,8 +278,7 @@ class Seed(Flower):
 
 
 def show_plant_statistics(plant: Plant) -> None:
-    grow, age, show = plant.get_stats()
-    print(f"Stats: {grow} grow, {age} age, {show} show")
+    plant.display_statistics()
 
 
 def ft_garden_analytics() -> None:
@@ -259,20 +303,31 @@ def ft_garden_analytics() -> None:
     show_plant_statistics(flower)
     print()
 
-    #Pendiente de hacer que el stats coja también el contador de clases hijas de Plant
     print("=== Tree")
     tree: Tree = Tree("Oak", 200.0, 365, 5.0)
     tree.show()
     print("[asking the oak to produce shade]")
     tree.produce_shade()
+    print("[statistics for Oak]")
+    tree.display_statistics()
     print()
 
-    print("=== Vegetable")
-    vegetable: Vegetable = Vegetable("Tomato", 5.0, 10, "April")
-    vegetable.show()
-    print("[make tomato grow and age for 20 days]")
-    vegetable.age(20)
-    vegetable.show()
+    print("=== Seed")
+    seed: Seed = Seed("sunflower", 5.0, 10, "Yellow")
+    seed.show()
+    print("[make sunflower grow, age and bloom]")
+    seed.bloom(42)
+    seed.age(20)
+    seed.show()
+    print("[statistics for Sunflower]")
+    seed.display_statistics()
+    print()
+
+    print("=== Anonymous")
+    anonymous: Plant = Plant.create_plant()
+    anonymous.show()
+    print("[statistics for Unknown plant]")
+    anonymous.display_statistics()
 
 
 if __name__ == "__main__":
