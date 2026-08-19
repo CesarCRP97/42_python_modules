@@ -11,9 +11,10 @@ def test_temperature():
         print()
         temperature = input_temperature("abc")
         print(f"Temperature is now {temperature}ºC")
-        print()
     except Exception as e:
         print(f"Caught input_temperature error: {e}")
+    finally:
+        print()
 
 
 if __name__ == "__main__":
