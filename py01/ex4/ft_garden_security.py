@@ -34,8 +34,11 @@ class Plant:
     def get_name(self) -> str:
         return self.name
 
-    def get_height(self) -> float:
-        return round(self.height, 2)
+    def get_height(self, decimal_rounding: int = 2) -> float:
+        if decimal_rounding == 0:
+            return round(self.height)
+        else:
+            return round(self.height, decimal_rounding)
 
     def get_days(self) -> int:
         return self.days
@@ -44,7 +47,7 @@ class Plant:
     def set_height(self, height: float) -> None:
         if height >= 0:
             self._height = height
-            print(f"Height updated: {self.get_printable_height()}")
+            print(f"Height updated: {self.get_printable_height(0)}")
         else:
             print(
                 f"{self.get_printable_name()}: Error, height can't be negative"
@@ -65,8 +68,8 @@ class Plant:
     def get_printable_name(self) -> str:
         return self.get_name().capitalize()
 
-    def get_printable_height(self) -> str:
-        return str(self.get_height()) + "cm"
+    def get_printable_height(self, rounding_decimals: int = 2) -> str:
+        return str(self.get_height(rounding_decimals)) + "cm"
 
     def get_printable_days(self) -> str:
         return str(self.days) + " days old"
