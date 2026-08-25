@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 
 def garden_operations(operation_number: int) -> int:
     match operation_number:
