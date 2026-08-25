@@ -6,16 +6,18 @@ def garden_operations(operation_number: int) -> int:
         case 1:
             return int(2 / 0)
         case 2:
-            open("ajsdklja.txt")
+            open("/non/existent/file")
         case 3:
-            return len(42)
+            "gola caracola" + 1
     return 1
 
 
 def test_error_types():
     for n in range(0, 5):
         try:
-            print(f"Correct result : {garden_operations(n)}!!!!")
+            print(f"Testing operation {n}...")
+            garden_operations(n)
+            print("Operation completed succesfully")
 
         except ValueError as e:
             print(f"Catched a Value error: {e}")
@@ -32,4 +34,5 @@ def test_error_types():
 if __name__ == "__main__":
     print("=== Testing Differents Errors ===")
     test_error_types()
-    print("=== End of Program ===")
+    print()
+    print("All error types tested successfully!")
