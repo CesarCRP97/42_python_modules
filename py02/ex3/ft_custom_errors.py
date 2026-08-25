@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 
 class GardenError(Exception):
 	def __init__(self, message: str = "Unknown garden error detected!!"):
@@ -14,3 +15,9 @@ class WaterError(GardenError):
 
 def ft_custom_errors() -> None:
 	
+
+if __name__ == "__main__":
+    print("=== Testing Differents Errors ===")
+    ft_custom_errors()
+    print()
+    print("All error types tested successfully!")
