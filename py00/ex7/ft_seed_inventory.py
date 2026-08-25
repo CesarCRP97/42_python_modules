@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def ft_seed_inventory(seed_type: str, quantity: int, unit: str) -> None:
     if unit == "packets":
         print(seed_type.capitalize(), "seeds: ", quantity,

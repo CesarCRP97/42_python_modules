@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 
 class Plant:
     def __init__(self, name: str, height: int, age: int) -> None:

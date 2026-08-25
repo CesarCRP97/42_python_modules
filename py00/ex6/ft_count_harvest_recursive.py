@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def ft_count_harvest_recursive() -> None:
     total_days:  int = int(input("Days until harvest: "))
 

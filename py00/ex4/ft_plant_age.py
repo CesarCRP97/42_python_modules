@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def ft_plant_age() -> None:
     plant_age: int = int(input("Enter plant age in days: "))
     if plant_age > 60:

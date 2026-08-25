@@ -1,4 +1,4 @@
-
+#!/usr/bin/python3
 
 class Plant:
     growth_rate: float = 0.8

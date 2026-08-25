@@ -1,4 +1,4 @@
-
+#!/usr/bin/python3
 
 def ft_garden_intro() -> None:
     name: str = "Rose"

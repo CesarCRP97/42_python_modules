@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def ft_harvest_total() -> None:
     total_harvest: int = 0
     total_harvest += int(input("Day 1 harvest: "))
