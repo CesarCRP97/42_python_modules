@@ -5,7 +5,7 @@ class Plant:
 
     def __init__(self, name: str, height: float, days: int) -> None:
         self.name: str = name
-        self.height: float = height
+        self.height: float = float(height)
         self.days: int = days
 
     def show(self) -> None:
@@ -43,7 +43,7 @@ class Plant:
 def ft_plant_growth() -> None:
     print("=== Garden Plant Growth ===")
 
-    plant1: Plant = Plant("Rose", 25.0, 30)
+    plant1: Plant = Plant("Rose", 25, 30)
     plant1.show()
     initial_height: float = plant1.get_height()
     for i in range(0, 7):
