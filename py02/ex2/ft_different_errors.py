@@ -13,7 +13,7 @@ def garden_operations(operation_number: int) -> int:
     return 1
 
 
-def test_error_types():
+def test_error_types() -> None:
     for n in range(0, 5):
         try:
             print(f"Testing operation {n}...")

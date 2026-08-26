@@ -106,7 +106,7 @@ class Plant:
         self._height += self.growth_rate
         self._statistics.register_grow()
 
-    def age(self, days=1) -> None:
+    def age(self, days: int = 1) -> None:
         if days <= 0:
             print("Invalid quantity of days to age!!! :(")
         else:

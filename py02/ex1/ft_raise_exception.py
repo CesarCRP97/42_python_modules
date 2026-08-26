@@ -12,7 +12,7 @@ def input_temperature(temp_str: str) -> int:
         raise ValueError(f"{conversion}ºC is too cold for plants (min 0ºC)")
 
 
-def test_temperature():
+def test_temperature() -> None:
     temperatures = ["25", "abc", "100", "-30"]
 
     for temp in temperatures:
