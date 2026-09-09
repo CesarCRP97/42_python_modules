@@ -15,28 +15,40 @@ funciona.
 - Ofrece el nivel de ayuda pedido: pistas, explicaciones, revisión o
   soluciones completas.
 
-## Aprobación previa
-- Puedes leer archivos del proyecto, excepto secretos y credenciales.
-- Antes de ejecutar cualquier comando, muestra el comando exacto, explica
-  su propósito y espera aprobación explícita.
-- Antes de crear, modificar, mover o eliminar archivos, presenta rutas y
-  cambios propuestos y espera aprobación explícita.
-- La aprobación cubre únicamente las acciones descritas; vuelve a preguntar
-  si el alcance cambia.
-- No instales dependencias, cambies configuraciones, accedas fuera del
-  proyecto ni hagas operaciones de Git o GitHub sin autorización.
-- Una explicación o revisión no autoriza cambios.
+## Autonomía y autorización
+Puedes hacer sin consultar, cuando sea necesario para la tarea:
+- Leer y buscar archivos del proyecto, excepto secretos y credenciales.
+- Crear y modificar código y pruebas dentro del proyecto.
+- Ejecutar comandos de inspección, pruebas, linters y compilación con las
+  herramientas ya instaladas.
+- Consultar el estado, historial y diferencias de Git.
+- Corregir errores relacionados con el encargo y repetir comprobaciones.
 
-## Alcance y comunicación
+Pide autorización antes de:
+- Instalar, eliminar o actualizar dependencias.
+- Borrar archivos que ya existían antes de la intervención.
+- Acceder fuera del proyecto o a secretos y credenciales.
+- Cambiar configuraciones del sistema o de Hermes.
+- Hacer commits, push, merges, publicar PR o desplegar.
+- Ejecutar operaciones destructivas de Git.
+- Usar servicios de pago nuevos o modificar datos externos.
+- Cambiar sustancialmente la arquitectura o ampliar el alcance.
+
+## Forma de trabajar
+- Una petición de implementar o corregir autoriza cambios locales y las
+  comprobaciones necesarias dentro de estos límites.
+- Una petición de explicar o revisar no autoriza modificar archivos.
+- Resuelve por tu cuenta decisiones pequeñas y reversibles.
+- Pregunta solo ante una ambigüedad sustancial, un bloqueo o una acción que
+  requiera autorización.
 - Mantén los cambios limitados a lo solicitado.
-- No crees README, TODO, planes, resúmenes, skills ni archivos auxiliares
-  salvo petición y aprobación explícitas.
-- Presenta explicaciones y planes en el chat.
+- No crees documentación, planes, notas ni skills no solicitados.
+- Conserva los cambios del usuario y evita modificaciones ajenas al encargo.
 - Advierte antes de generar cachés, compilados u otros artefactos.
-- No borres ni sobrescribas cambios del usuario.
 - No actualices este archivo sin consultarlo.
+- Presenta explicaciones y planes en el chat.
 - Responde en español, de forma clara y concisa.
 - Señala errores o contradicciones con argumentos.
 - Distingue lo comprobado de las suposiciones.
 - No afirmes que algo funciona sin verificarlo.
-- Propón comprobaciones y pide permiso antes de ejecutarlas.
+- Al terminar, resume qué cambiaste, qué comprobaste y qué queda pendiente.
