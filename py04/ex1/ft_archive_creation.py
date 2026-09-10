@@ -18,6 +18,10 @@ def read_archive(file_name: str) -> str | None:
             print(f"File '{file_name}' closed.")
     return None
 
+def display_lines(content: str) -> None:
+    print("---\n")
+    print(content, end="" if content.endswith("\n") else "\n")
+    print("\n---")
 
 def transform_content(content: str) -> str:
     transformed: str = ""
@@ -39,17 +43,18 @@ def save_archive(file_name: str, content: str) -> None:
             file.close()
 
 
-def archive_file(file_name: str) -> None:
-    print("=== Cyber Archives Recovery & Preservation ===")
+def ft_archive_creation(file_name: str) -> None:
     print(f"Accessing file '{file_name}'")
     content: str | None = read_archive(file_name)
     if content is None:
         return
-    print(content, end="" if content.endswith("\n") else "\n")
+    display_lines(content)
     print("Transforming data:")
     transformed: str = transform_content(content)
-    print(transformed, end="")
-    new_file_name: str = input("Enter new file name (or empty): ")
+    display_lines(transformed)
+
+    input_message:str = "Enter new file name (nothing to avoid saving it): "
+    new_file_name: str = input(input_message)
     if new_file_name:
         save_archive(new_file_name, transformed)
     else:
@@ -57,7 +62,9 @@ def archive_file(file_name: str) -> None:
 
 
 if __name__ == "__main__":
+    print("=== Cyber Archives Recovery & Preservation ===\n")
     if len(sys.argv) != 2:
         print("Usage: ft_archive_creation.py <file>")
     else:
-        archive_file(sys.argv[1])
+        ft_archive_creation(sys.argv[1])
+    print("=== End of Program ===")
