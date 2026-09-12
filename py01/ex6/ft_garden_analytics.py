@@ -123,8 +123,8 @@ class Plant:
         return days > 365
 
     @classmethod
-    def create_plant(cls) -> "Plant":
-        return cls("Unknown plant", 0.0, 0)
+    def create_plant(class_name) -> "Plant":
+        return class_name("Unknown plant", 0.0, 0)
 
 
 class Tree(Plant):
@@ -147,7 +147,7 @@ class Tree(Plant):
                  trunk_diameter: float = 5.0) -> None:
         super().__init__(name, height, days)
         self._trunk_diameter: float = trunk_diameter
-        self.init_stats()
+        self._statistics: Tree.Statistics = self.Statistics()
 
     @property
     def trunk_diameter(self) -> float:
@@ -168,7 +168,7 @@ class Tree(Plant):
         h: str = self.get_printable_height()
         w: str = self.get_printable_trunk_diameter()
         message += f" now produces a shade of {h} long and {w} wide."
-        self._shade_stats += 1
+        self._statistics.register_shade()
         print(message)
 
     def get_printable_trunk_diameter(self) -> str:
