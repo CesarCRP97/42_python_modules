@@ -319,6 +319,7 @@ def ft_garden_analytics() -> None:
     print("[make sunflower grow, age and bloom]")
     seed.bloom()
     seed.age(20)
+    seed.grow()
     seed.show()
     print("[statistics for Sunflower]")
     seed.display_statistics()
