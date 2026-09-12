@@ -121,8 +121,8 @@ class Plant:
         return days > 365
 
     @classmethod
-    def create_plant(class_name) -> "Plant":
-        return class_name("Unknown plant", 0.0, 0)
+    def create_plant(cls: type["Plant"]) -> "Plant":
+        return cls("Unknown plant", 0.0, 0)
 
 
 class Tree(Plant):
