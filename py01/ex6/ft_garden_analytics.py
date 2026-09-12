@@ -99,9 +99,10 @@ class Plant:
               self.get_printable_days() + post_message)
         self._statistics.register_show()
 
-    def grow(self) -> None:
+    def grow(self, register_grow: bool = True) -> None:
         self._height += self.growth_rate
-        self._statistics.register_grow()
+        if register_grow:
+            self._statistics.register_grow()
 
     def age(self, days: int = 1) -> None:
         if days <= 0:
@@ -109,7 +110,7 @@ class Plant:
         else:
             for i in range(days):
                 self._days += 1
-                self.grow()
+                self.grow(False)
             self._statistics.register_age()
 
     def display_statistics(self) -> None:
