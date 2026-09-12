@@ -153,11 +153,12 @@ class Tree(Plant):
 
 class Vegetable(Plant):
     nutritional_value_increment: int = 3
+
     def __init__(self, name: str,
                  height: float,
                  days: int,
                  harvest_season: str = "September",
-                ) -> None:
+                 ) -> None:
         super().__init__(name, height, days)
         self._harvest_season: str = harvest_season
         self._nutritional_value = 0

@@ -175,15 +175,15 @@ class Tree(Plant):
 
 class Vegetable(Plant):
     nutritional_value_increment: int = 3
+
     def __init__(self, name: str,
                  height: float,
                  days: int,
                  harvest_season: str = "September",
-                ) -> None:
+                 ) -> None:
         super().__init__(name, height, days)
         self._harvest_season: str = harvest_season
         self._nutritional_value = 0
-
 
     @property
     def harvest_season(self) -> str:
@@ -199,10 +199,9 @@ class Vegetable(Plant):
     def get_nutritional_value(self) -> int:
         return self.nutritional_value
 
-    def grow(self) -> None:
-        super().grow()
+    def grow(self, register_grow: bool = True) -> None:
+        super().grow(register_grow)
         self._nutritional_value += self.nutritional_value_increment
-
 
     def show(self, pre_message: str = "", post_message: str = "") -> None:
         super().show(pre_message, post_message)
