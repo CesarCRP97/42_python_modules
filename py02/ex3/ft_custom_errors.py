@@ -1,18 +1,21 @@
 #!/usr/bin/python3
 
 class GardenError(Exception):
-    def __init__(self, message: str = "Unknown garden error detected!!"):
+    def __init__(self, message: str = "Unknown garden error detected!!"
+                 ) -> None:
         self.message: str = message
         super().__init__(self.message)
 
 
 class PlantError(GardenError):
-    def __init__(self, message: str = "The tomato plant is wilting!"):
+    def __init__(self, message: str = "The tomato plant is wilting!"
+                 ) -> None:
         super().__init__(message)
 
 
 class WaterError(GardenError):
-    def __init__(self, message: str = "Not enough water in the tank!"):
+    def __init__(self, message: str = "Not enough water in the tank!"
+                 ) -> None:
         super().__init__(message)
 
 
@@ -28,7 +31,7 @@ def ft_custom_errors() -> None:
         print("Testing WaterError...")
         raise WaterError()
     except WaterError as e:
-        print(f"Caught PlantError: {e}")
+        print(f"Caught WaterError: {e}")
         print()
     print("Testing catching all garden errors...")
     try:

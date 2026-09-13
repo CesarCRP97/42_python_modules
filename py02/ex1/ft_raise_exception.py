@@ -13,7 +13,7 @@ def input_temperature(temp_str: str) -> int:
 
 
 def test_temperature() -> None:
-    temperatures = ["25", "abc", "100", "-30"]
+    temperatures = ["25", "abc", "100", "-50"]
 
     for temp in temperatures:
         try:
