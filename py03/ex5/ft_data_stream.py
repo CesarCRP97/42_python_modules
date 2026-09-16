@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 
-from typing import Generator
+import typing
 import random
 
 Event = tuple[str, str]
 
-def gen_event() -> Generator[Event, None, None]:
+
+def gen_event() -> typing.Generator[Event, None, None]:
     names: list[str] = [
         "alice",
         "bob",
@@ -30,7 +31,8 @@ def gen_event() -> Generator[Event, None, None]:
         yield name, action
 
 
-def fill_list(gen: Generator[Event, None, None], nbr: int) -> list[Event]:
+def fill_list(gen: typing.Generator[Event, None, None], nbr: int
+              ) -> list[Event]:
     events: list[Event] = []
     if nbr < 0:
         raise ValueError("Can't fill the list with a negative quantity")
@@ -40,7 +42,7 @@ def fill_list(gen: Generator[Event, None, None], nbr: int) -> list[Event]:
     return events
 
 
-def consume_event(events: list[Event]) -> Generator[Event, None, None]:
+def consume_event(events: list[Event]) -> typing.Generator[Event, None, None]:
     while len(events) > 0:
         index: int = random.randrange(len(events))
         event: Event = events.pop(index)
@@ -48,7 +50,7 @@ def consume_event(events: list[Event]) -> Generator[Event, None, None]:
 
 
 def ft_data_stream() -> None:
-    event_generator: Generator[Event, None, None] = gen_event()
+    event_generator: typing.Generator[Event, None, None] = gen_event()
     for i in range(1, 1001):
         new_event: Event = next(event_generator)
         message: str = f"Day {i}: "
@@ -58,13 +60,14 @@ def ft_data_stream() -> None:
         events_list: list[Event] = fill_list(event_generator, 10)
         print(f"Built list of {len(events_list)}: {events_list}")
         for event in consume_event(events_list):
-            print(f"Got event from list{event}")
+            print(f"Got event from list: {event}")
             print(f"=== Remains in list: {events_list}")
     except ValueError as e:
         print(f"What??: {e}")
 
+
 if __name__ == "__main__":
-    print(f"=== Inventory System Analysis ===")
+    print("=== Data Stream Analysis ===")
     print()
     ft_data_stream()
     print()
