@@ -18,10 +18,12 @@ def read_archive(file_name: str) -> str | None:
             print(f"File '{file_name}' closed.")
     return None
 
+
 def display_lines(content: str) -> None:
     print("---\n")
     print(content, end="" if content.endswith("\n") else "\n")
     print("\n---")
+
 
 def transform_content(content: str) -> str:
     transformed: str = ""
@@ -53,7 +55,7 @@ def ft_archive_creation(file_name: str) -> None:
     transformed: str = transform_content(content)
     display_lines(transformed)
 
-    input_message:str = "Enter new file name (nothing to avoid saving it): "
+    input_message: str = "Enter new file name (nothing to avoid saving it): "
     new_file_name: str = input(input_message)
     if new_file_name:
         save_archive(new_file_name, transformed)
