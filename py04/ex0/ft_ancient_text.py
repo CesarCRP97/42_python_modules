@@ -21,11 +21,10 @@ def recover_file(file_name: str) -> None:
 
 
 if __name__ == "__main__":
-    print("=== Cyber Archives Recovery ===")
 
     if len(sys.argv) != 2:
         print("Usage: ft_ancient_text.py <file>")
     else:
+        print("=== Cyber Archives Recovery ===")
         recover_file(sys.argv[1])
-
-    print("=== End of Program ===")
+        print("=== End of Program ===")
