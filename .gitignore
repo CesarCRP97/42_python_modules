@@ -1,4 +1,3 @@
-
 subjects/*.pdf
 .mypy_cache
 AGENTS.md
