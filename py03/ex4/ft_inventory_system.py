@@ -71,10 +71,7 @@ def get_item_least_abundant(inventory: dict[str, int]) -> str | None:
 
 
 def get_total_items(inventory: dict[str, int]) -> int:
-    total_nbr_items: int = 0
-    for item in inventory:
-        total_nbr_items += inventory[item]
-    return total_nbr_items
+    return sum(inventory.values())
 
 
 def list_percentages_items(inventory: dict[str, int]) -> None:
