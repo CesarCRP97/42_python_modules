@@ -28,6 +28,7 @@ class DataProcessor(ABC):
         return rank, value
 
 class NumericProcessor(DataProcessor):
+
     def validate(self, data: Any) -> bool:
         if isinstance(data, int) or isinstance(data, float):
             return True

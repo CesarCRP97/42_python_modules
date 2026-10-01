@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
 from typing import Any
-from typing_extensions import override
 from abc import ABC, abstractmethod
 
 
@@ -40,7 +39,6 @@ class DataProcessor(ABC):
 
 class NumericProcessor(DataProcessor):
 
-    @override
     def validate(self, data: Any) -> bool:
         if isinstance(data, int) or isinstance(data, float):
             return True
@@ -51,7 +49,7 @@ class NumericProcessor(DataProcessor):
             return True
         return False
 
-    @override
+
     def ingest(self, data: int | float | list[int | float]) -> None:
         if not self.validate(data):
             raise Exception("Improper numeric data")
@@ -66,7 +64,6 @@ class NumericProcessor(DataProcessor):
 
 class TextProcessor(DataProcessor):
 
-    @override
     def validate(self, data: Any) -> bool:
         if isinstance(data, str):
             return True
@@ -78,7 +75,6 @@ class TextProcessor(DataProcessor):
         return False
 
 
-    @override
     def ingest(self, data: str | list[str]) -> None:
         if not self.validate(data):
             raise Exception("Improper text data")
@@ -93,7 +89,6 @@ class TextProcessor(DataProcessor):
 
 class LogProcessor(DataProcessor):
 
-    @override
     def validate(self, data: Any) -> bool:
         if isinstance(data, dict):
             for key in data:
@@ -125,7 +120,6 @@ class LogProcessor(DataProcessor):
         return True
 
 
-    @override
     def ingest(self, data: dict[str, str] | list[dict[str, str]]) -> None:
         if not self.validate(data):
             raise Exception("Improper log data")
