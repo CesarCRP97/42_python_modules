@@ -9,8 +9,8 @@ class DataProcessor(ABC):
     def __init__(self):
         super().__init__()
         self._data: list[str] = []
-        self._rank : int = 0
-        self._total : int = 0
+        self._rank: int = 0
+        self._total: int = 0
 
     @abstractmethod
     def validate(self, data: Any) -> bool:
@@ -23,8 +23,8 @@ class DataProcessor(ABC):
     def output(self) -> tuple[int, str]:
         if len(self._data) == 0:
             raise Exception("No data available")
-        value : str = self._data.pop(0)
-        rank : int = self._rank
+        value: str = self._data.pop(0)
+        rank: int = self._rank
         self._rank += 1
         return rank, value
 
@@ -44,11 +44,10 @@ class NumericProcessor(DataProcessor):
             return True
         if isinstance(data, list):
             for item in data:
-                if not(isinstance(item, int) or isinstance(item, float)):
+                if not (isinstance(item, int) or isinstance(item, float)):
                     return False
             return True
         return False
-
 
     def ingest(self, data: int | float | list[int | float]) -> None:
         if not self.validate(data):
@@ -73,7 +72,6 @@ class TextProcessor(DataProcessor):
                     return False
             return True
         return False
-
 
     def ingest(self, data: str | list[str]) -> None:
         if not self.validate(data):
@@ -109,7 +107,6 @@ class LogProcessor(DataProcessor):
             return True
         return False
 
-
     def _validate_log(self, data: dict[Any, Any]) -> bool:
         if "log_level" not in data or "log_message" not in data:
             return False
@@ -118,7 +115,6 @@ class LogProcessor(DataProcessor):
         if not isinstance(data["log_message"], str):
             return False
         return True
-
 
     def ingest(self, data: dict[str, str] | list[dict[str, str]]) -> None:
         if not self.validate(data):
@@ -179,6 +175,7 @@ def ft_consume_elements(numeric_processor: DataProcessor,
     for _ in range(2):
         text_processor.output()
     log_processor.output()
+
 
 def main() -> None:
 

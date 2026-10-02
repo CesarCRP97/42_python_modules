@@ -9,7 +9,7 @@ class DataProcessor(ABC):
     def __init__(self):
         super().__init__()
         self._data: list[str] = []
-        self._rank : int = 0
+        self._rank: int = 0
 
     @abstractmethod
     def validate(self, data: Any) -> bool:
@@ -22,10 +22,11 @@ class DataProcessor(ABC):
     def output(self) -> tuple[int, str]:
         if len(self._data) == 0:
             raise Exception("No data available")
-        value : str = self._data.pop(0)
-        rank : int = self._rank
+        value: str = self._data.pop(0)
+        rank: int = self._rank
         self._rank += 1
         return rank, value
+
 
 class NumericProcessor(DataProcessor):
 
@@ -34,7 +35,7 @@ class NumericProcessor(DataProcessor):
             return True
         if isinstance(data, list):
             for item in data:
-                if not(isinstance(item, int) or isinstance(item, float)):
+                if not (isinstance(item, int) or isinstance(item, float)):
                     return False
             return True
         return False
@@ -47,8 +48,6 @@ class NumericProcessor(DataProcessor):
         else:
             for item in data:
                 self._data.append(str(item))
-
-
 
 
 class TextProcessor(DataProcessor):
