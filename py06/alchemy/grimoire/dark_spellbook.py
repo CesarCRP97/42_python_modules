@@ -1,7 +1,3 @@
-# Unlike light_spellbook.py, this import stays at the top of the
-# file on purpose: dark_spellbook and dark_validator import each
-# other at module level, which is exactly what creates the circular
-# dependency curse (see ft_kaboom_1.py).
 from .dark_validator import validate_ingredients
 
 
