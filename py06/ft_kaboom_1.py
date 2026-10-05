@@ -5,4 +5,5 @@ print("Test import now - THIS WILL RAISE AN UNCAUGHT EXCEPTION")
 # dark_spellbook.py and dark_validator.py import each other at
 # module level, so this import never completes: it is expected to
 # blow up with an ImportError (partially initialized module).
+
 from alchemy.grimoire.dark_spellbook import (dark_spell_record)
