@@ -1,4 +1,5 @@
 subjects/*.pdf
+subjects/*.md
 .mypy_cache
 AGENTS.md
 tests/
